@@ -2,43 +2,40 @@
 
 ## usersテーブル
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| nickname              | string | null: false |
-| email                 | string | null: false |
-| password              | string | null: false |
-| last name             | string | null: false |
-| last name katakana    | string | null: false |
-| first name            | string | null: false |
-| first name katakana   | string | null: false |
-| birthday              | date   | null: false |
+| Column                | Type   | Options                  |
+| --------------------- | ------ | ------------------------ |
+| nickname              | string | null: false              |
+| email                 | string | null: false unique: true |
+| encrypted_password    | string | null: false              |
+| last name             | string | null: false              |
+| last name katakana    | string | null: false              |
+| first name            | string | null: false              |
+| first name katakana   | string | null: false              |
+| birthday              | date   | null: false              |
 
 ### Association
 
 - has_many :items
-- has_many :payments
-- has_one :address
-- 
+- has_many :payments 
 
 ## itemsテーブル
 
-| Column                  | Type       | Options                       |
-| ----------------------- | ---------- | ----------------------------- |
-| name                    | text       | null: false                   |
-| text                    | text       | null: false                   |
-| price                   | int        | null: false                   |
-| category                | text       | null: false                   |
-| condition               | text       | null: false                   |
-| charges                 | string     | null: false                   |
-| area                    | string     | null: false                   |
-| estimated shopping date | text       | null: false                   |
-| user                    | references | null: false foreign_key: true |
+| Column                     | Type       | Options                       |
+| -------------------------- | ---------- | ----------------------------- |
+| name                       | string     | null: false                   |
+| text                       | text       | null: false                   |
+| price                      | integer    | null: false                   |
+| category_id                | integer    | null: false                   |
+| condition_id               | integer    | null: false                   |
+| charges_id                 | integer    | null: false                   |
+| area_id                    | integer    | null: false                   |
+| estimated shopping date_id | integer    | null: false                   |
+| user                       | references | null: false foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :payment
-- has_one :address
 
 ## paymentテーブル
 
@@ -58,15 +55,13 @@
 | Column         | Type       | Options                       |
 | -------------- | ---------- | ----------------------------- |
 | postal code    | int        | null: false                   |
-| prefectures    | string     | null: false                   |
+| prefectures_id | integer    | null: false                   |
 | municipalities | text       | null: false                   |
 | house number   | text       | null: false                   |
-| building name  | text       | null: false                   |
+| building name  | text       |                               |
 | phone number   | int        | null: false                   |
 | user           | references | null: false foreign_key: true |
 
 ### Association
 
-- has_one :user
-- has_one :item
-- has_one :payment
+- belongs_to :payment
