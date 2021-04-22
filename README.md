@@ -27,7 +27,7 @@
 | price                      | integer    | null: false                   |
 | category_id                | integer    | null: false                   |
 | condition_id               | integer    | null: false                   |
-| charges_id                 | integer    | null: false                   |
+| charge_id                  | integer    | null: false                   |
 | area_id                    | integer    | null: false                   |
 | estimated_shopping_date_id | integer    | null: false                   |
 | user                       | references | null: false foreign_key: true |
@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :payment
 
-## paymentテーブル
+## paymentsテーブル
 
 | Column      | Type       | Options                       |
 | ----------- | -------    | ----------------------------- |
@@ -50,7 +50,7 @@
 - belongs_to :item
 - has_one :address
 
-## addressテーブル
+## addressesテーブル
 
 | Column         | Type       | Options                       |
 | -------------- | ---------- | ----------------------------- |
