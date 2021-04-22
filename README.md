@@ -7,10 +7,10 @@
 | nickname              | string | null: false              |
 | email                 | string | null: false unique: true |
 | encrypted_password    | string | null: false              |
-| last name             | string | null: false              |
-| last name katakana    | string | null: false              |
-| first name            | string | null: false              |
-| first name katakana   | string | null: false              |
+| last_name             | string | null: false              |
+| last_name_katakana    | string | null: false              |
+| first_name            | string | null: false              |
+| first_name_katakana   | string | null: false              |
 | birthday              | date   | null: false              |
 
 ### Association
@@ -29,7 +29,7 @@
 | condition_id               | integer    | null: false                   |
 | charges_id                 | integer    | null: false                   |
 | area_id                    | integer    | null: false                   |
-| estimated shopping date_id | integer    | null: false                   |
+| estimated_shopping_date_id | integer    | null: false                   |
 | user                       | references | null: false foreign_key: true |
 
 ### Association
@@ -54,13 +54,13 @@
 
 | Column         | Type       | Options                       |
 | -------------- | ---------- | ----------------------------- |
-| postal code    | int        | null: false                   |
+| postal_code    | string     | null: false                   |
 | prefectures_id | integer    | null: false                   |
 | municipalities | text       | null: false                   |
-| house number   | text       | null: false                   |
-| building name  | text       |                               |
-| phone number   | int        | null: false                   |
-| user           | references | null: false foreign_key: true |
+| house_number   | text       | null: false                   |
+| building_name  | text       |                               |
+| phone_number   | string     | null: false                   |
+| payment        | references | null: false foreign_key: true |
 
 ### Association
 
