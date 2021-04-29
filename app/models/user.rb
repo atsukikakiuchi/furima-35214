@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :first_name_katakana
   end
   validates :birthday
-  validates :password,:password_confirmation,format:{with:/(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
+  validates :password,:password_confirmation,format:{with:/\A(?=.*?[a-zA-Z\d])(?=.*?\d)[a-zA-Z\d]{6,}+\z/}
   end
 
    # has_many :items
