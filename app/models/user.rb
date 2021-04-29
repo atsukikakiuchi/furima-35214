@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :password,:password_confirmation,format:{with:/(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
   end
 
-  has_many :items
-  has_many :payments
+   # has_many :items
+   # has_many :payments
 
 end
