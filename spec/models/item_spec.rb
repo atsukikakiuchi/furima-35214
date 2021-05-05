@@ -29,29 +29,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
       it 'カテゴリーが必須' do
-        @item.category_id = '1'
+        @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it '商品の状態が必須' do
-        @item.condition_id = '1'
+        @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it '配送料の負担が必須' do
-        @item.charge_id = '1'
+        @item.charge_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge must be other than 1")
+        expect(@item.errors.full_messages).to include("Charge can't be blank")
       end
       it '発送元の地域が必須' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送の日数が必須' do
-        @item.estimated_shopping_date_id = '1'
+        @item.estimated_shopping_date_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Estimated shopping date must be other than 1")
+        expect(@item.errors.full_messages).to include("Estimated shopping date can't be blank")
       end
       it '価格が必須' do
         @item.price = ''
