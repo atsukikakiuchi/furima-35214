@@ -32,6 +32,14 @@ class ItemsController < ApplicationController
 
   def edit
   end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render item_path(@item.id)
+    end
+  end
   
   private
 
