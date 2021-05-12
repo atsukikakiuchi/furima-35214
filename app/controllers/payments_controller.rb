@@ -11,7 +11,6 @@ class PaymentsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @payment_address = PaymentAddress.new(payment_params)
-    binding.pry
     if @payment_address.valid?
       pay_item
       @payment_address.save
