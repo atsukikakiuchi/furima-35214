@@ -5,9 +5,6 @@ class PaymentsController < ApplicationController
 
   def index
     @payment_address = PaymentAddress.new
-    if @item.user_id == current_user.id
-      redirect_to root_path
-    end
   end
 
 
