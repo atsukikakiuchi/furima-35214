@@ -31,6 +31,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    unless @item.payment == nil
+      redirect_to root_path
+    end
   end
 
   def destroy

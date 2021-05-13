@@ -31,7 +31,7 @@
     <% end %>
     <% end %>
 
-    <% if @item.present? %>
+    <% unless @item.payment.present? %>
     <% if user_signed_in? && current_user.id != @item.user_id %>
     <%= link_to "購入画面に進む", item_payments_path(@item.id), class:"item-red-btn"%>
     <% end %>
