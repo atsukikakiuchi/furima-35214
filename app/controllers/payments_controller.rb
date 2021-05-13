@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
   end
 
   def move_to_index2
-    unless @item.payment == nil
+    if @item.user_id == current_user.id || @item.payment != nil
       redirect_to root_path
     end
   end
