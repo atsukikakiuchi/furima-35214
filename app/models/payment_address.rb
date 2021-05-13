@@ -8,7 +8,7 @@ class PaymentAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :manicipality
     validates :house_number
-    validates :phone_number, Length: {maximum: 11 }
+    validates :phone_number, Length: {maximum: 11 },format:{with:/\A[0-9]+\z/}
     validates :item_id
     validates :user_id
     validates :token

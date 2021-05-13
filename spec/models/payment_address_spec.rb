@@ -55,6 +55,11 @@ RSpec.describe PaymentAddress, type: :model do
         @payment_address.valid?
         expect(@payment_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
+      it 'phone_numberは英数混合では保存できない' do
+        @payment_address.phone_number = '1a23456a892'
+        @payment_address.valid?
+        expect(@payment_address.errors.full_messages).to include("Phone number is invalid")
+      end
       it 'user_idが存在しないと登録できない' do
         @payment_address.user_id = ""
         @payment_address.valid?
