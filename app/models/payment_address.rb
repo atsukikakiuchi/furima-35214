@@ -1,6 +1,6 @@
 class PaymentAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :manicipality, :house_number, :building_name, :phone_number, :item_id, :user_id, :token, :payment_id
+  attr_accessor :postal_code, :prefecture_id, :manicipality, :house_number, :building_name, :phone_number, :item_id, :user_id, :token
 
 
   with_options presence: true do

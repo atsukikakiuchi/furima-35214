@@ -1,19 +1,15 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :move_to_index2, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
     @payment_address = PaymentAddress.new
-    unless @item.payment == nil
-      redirect_to root_path
-    end
     if @item.user_id == current_user.id
       redirect_to root_path
     end
   end
 
-  def new
-  end
 
   def create
     @item = Item.find(params[:item_id])
@@ -24,9 +20,6 @@ class PaymentsController < ApplicationController
       redirect_to root_path
     else
       render :index
-    end
-    unless @item.payment == nil
-      redirect_to root_path
     end
   end
 
@@ -43,5 +36,11 @@ class PaymentsController < ApplicationController
       card: payment_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_index2
+    unless @item.payment == nil
+      redirect_to root_path
+    end
   end
 end
