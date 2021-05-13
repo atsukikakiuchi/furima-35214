@@ -13,6 +13,10 @@ RSpec.describe PaymentAddress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@payment_address).to be_valid
       end
+      it 'building_nameは空でも保存できること' do
+        @payment_address.building_name = ""
+        expect(@payment_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -36,10 +40,6 @@ RSpec.describe PaymentAddress, type: :model do
         @payment_address.valid?
         expect(@payment_address.errors.full_messages).to include("House number can't be blank")
       end
-      it 'building_nameは空でも保存できること' do
-        @payment_address.building_name = ""
-        expect(@payment_address).to be_valid
-      end
       it 'tokenは空では登録できない' do
         @payment_address.token = ""
         @payment_address.valid?
@@ -54,6 +54,16 @@ RSpec.describe PaymentAddress, type: :model do
         @payment_address.phone_number = '123456789102'
         @payment_address.valid?
         expect(@payment_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+      it 'user_idが存在しないと登録できない' do
+        @payment_address.user_id = ""
+        @payment_address.valid?
+        expect(@payment_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが存在しないと登録できない' do
+        @payment_address.item_id = ""
+        @payment_address.valid?
+        expect(@payment_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

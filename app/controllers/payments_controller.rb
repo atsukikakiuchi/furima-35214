@@ -22,6 +22,9 @@ class PaymentsController < ApplicationController
     else
       render :index
     end
+    unless @item.payment == nil
+      redirect_to root_path
+    end
   end
 
   private
