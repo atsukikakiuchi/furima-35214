@@ -1,9 +1,9 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item
   before_action :move_to_index2, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @payment_address = PaymentAddress.new
     if @item.user_id == current_user.id
       redirect_to root_path
@@ -12,7 +12,6 @@ class PaymentsController < ApplicationController
 
 
   def create
-    @item = Item.find(params[:item_id])
     @payment_address = PaymentAddress.new(payment_params)
     if @payment_address.valid?
       pay_item
@@ -42,5 +41,9 @@ class PaymentsController < ApplicationController
     unless @item.payment == nil
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
