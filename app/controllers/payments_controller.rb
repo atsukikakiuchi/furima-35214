@@ -19,6 +19,7 @@ class PaymentsController < ApplicationController
     end
   end
 
+  
   private
 
   def payment_params
